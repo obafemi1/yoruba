@@ -1,82 +1,60 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	%sveltekit.head%
 </head>
-
-<body data-sveltekit-preload-data="hover">
-	<style type="text/css">
-		body {
-			background-image: url();
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			position: relative;
-			/* Make sure the body element is positioned relative */
-			min-height: 100vh;
-			/* set minimum height for the body element to ensure the button is at the bottom of the page */
-		}
-
-		.btn {
-			background-color: #4CAF50;
-			color: white;
-			border: none;
-			padding: 12px 24px;
-			font-size: 16px;
-			position: absolute;
-			bottom: 20px;
-			left: 50%;
-			transform: translateX(-50%);
-			cursor: pointer;
-		}
-
-
-
-		<title>Final Page</title>
-    <style>
-        .shape {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background-color: #555; /* Change the color if uneed */
-        }
-        .circle1 {
-            width: 100px;
-            height: 100px;
-            background-color: rgb(128, 117, 0);
-        }
-        .circle2 {
-            width: 80px;
-            height: 80px;
-            background-color: rgb(255, 0, 204);
-        }
-        .rectangle1 {
-            width: 150px;
-            height: 50px;
-            background-color: rgb(128, 117, 0));
-        }
-        .rectangle2 {
-            width: 100px;
-            height: 80px;
-            background-color: rgb(255, 0, 204);
-        }
-    </style>
-</head>
-<body style="background-image:url('file:D:\Pong')">
-    <div class="shape circle1"></div>
-    <div class="shape circle2"></div>
-    <div class="shape rectangle1"></div>
-    <div class="shape rectangle2"></div>
-    <button class="btn" onclick="window.location.href='file:"D:\Pong\IMG_3739.JPG"'">Start</button>
-
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pong Game</title>
+	<style>
+	  body, html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	  }
+  
+	  .container {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	  }
+  
+	  .ball {
+		width: 20px;
+		height: 20px;
+		background: red;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	  }
+  
+	  .paddle {
+		width: 10px;
+		height: 80px;
+		background: blue;
+		position: absolute;
+	  }
+  
+	  #leftPaddle {
+		left: 0;
+	  }
+  
+	  #rightPaddle {
+		right: 0;
+	  }
 	</style>
-	<div style="display: contents">%sveltekit.body%</div>
-</body>
+  </head>
+  <body>
+	<div class="container">
+	  <div class="ball"></div>
+	  <div class="paddle" id="leftPaddle"></div>
+	  <div class="paddle" id="rightPaddle"></div>
+	</div>
 
 </html>

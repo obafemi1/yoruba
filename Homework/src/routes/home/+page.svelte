@@ -1,20 +1,44 @@
 <script>
-    /** @type {import('./$types').PageData} */
-    export let data;
-</script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ball = document.querySelector('.ball');
+      const leftPaddle = document.getElementById('leftPaddle');
+      const rightPaddle = document.getElementById('rightPaddle');
+      const container = document.querySelector('.container');
 
-<img src="D:\Pong\IMG_3716.JPG" alt="The Image" />
-<button class="btn" onclick="window.location.href=`next-page.html`">Gear Up</button>
+      // Initial ball speed
+      let ballSpeedX = 2;
+      let ballSpeedY = 1;
 
-<img src="file:"D:\Pong\IMG_3737.JPG" alt="Background Image 1" />
-<button class="btn" onclick="window.location.href='D:\Pong'">Ready</button>
+      function update() {
+        // Move ball
+        ball.style.left = parseInt(ball.style.left) + ballSpeedX + 'px';
+        ball.style.top = parseInt(ball.style.top) + ballSpeedY + 'px';
 
+        // Check collision with container edges
+        if (parseInt(ball.style.top) <= 0 || parseInt(ball.style.top) + ball.offsetHeight >= container.offsetHeight) {
+          ballSpeedY = -ballSpeedY;
+        }
 
-<img src="file:"D:\Pong\IMG_3739.JPG" alt="Background Image 2" />
-<button class="btn" onclick="window.location.href='D:\Pong'">Start</button>
+        // Check collision with paddles
+        if (parseInt(ball.style.left) <= leftPaddle.offsetWidth &&
+            parseInt(ball.style.top) >= leftPaddle.offsetTop &&
+            parseInt(ball.style.top) <= leftPaddle.offsetTop + leftPaddle.offsetHeight) {
+          ballSpeedX = -ballSpeedX;
+        }
 
-<img src="file:"D:\Pong\IMG_3742.JPG" alt="Background Image 3" />
-<button class="btn" onclick="window.location.href='D:\Pong'">Try Again</button>
+        if (parseInt(ball.style.left) + ball.offsetWidth >= container.offsetWidth - rightPaddle.offsetWidth &&
+            parseInt(ball.style.top) >= rightPaddle.offsetTop &&
+            parseInt(ball.style.top) <= rightPaddle.offsetTop + rightPaddle.offsetHeight) {
+          ballSpeedX = -ballSpeedX;
+        }
 
+        // Game loop
+        requestAnimationFrame(update);
+      }
+
+      // Start game loop
+      update();
+    });
+  </script>
 
 
