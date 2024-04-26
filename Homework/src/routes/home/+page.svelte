@@ -55,43 +55,40 @@
 	  }
   
 	  function handleKeyDown(event) {
-		const keyPressed = event.key.toLowerCase();
-		if (keyPressed === `arrowup`) {
-		  // Move right Paddle up//
-		  rightPaddle.style.top = Math.max(
-			parseInt(rightPaddle.style.top) - PADDLE_SPEED,
-			0
-		  ) + `px`;
-		} else if (keyPressed === `arrowdown`) {
-		  // Move right paddle down
-		  rightPaddle.style.top = Math.min(
-			parseInt(rightPaddle.style.top) + PADDLE_SPEED,
-			container.offsetHeight - rightPaddle.offsetHeight
-		  ) + `px`;
-		}
-	  }
+        const keyPressed = event.key.toLowerCase();
+        if (keyPressed === `arrowup` || keyPressed === `w`) {
+          // Move left paddle up
+          leftPaddle.style.top = Math.max(
+            parseInt(leftPaddle.style.top) - PADDLE_SPEED,
+            0
+          ) + `px`;
+        } else if (keyPressed === `arrowdown` || keyPressed === `s`) {
+          // Move left paddle down
+          leftPaddle.style.top = Math.min(
+            parseInt(leftPaddle.style.top) + PADDLE_SPEED,
+            container.offsetHeight - leftPaddle.offsetHeight
+          ) + `px`;
+        } else if (keyPressed === `arrowup`) {
+          // Move right paddle up
+          rightPaddle.style.top = Math.max(
+            parseInt(rightPaddle.style.top) - PADDLE_SPEED,
+            0
+          ) + `px`;
+        } else if (keyPressed === `arrowdown`) {
+          // Move right paddle down
+          rightPaddle.style.top = Math.min(
+            parseInt(rightPaddle.style.top) + PADDLE_SPEED,
+            container.offsetHeight - rightPaddle.offsetHeight
+          ) + `px`;
+        }
+      }
 
-	  function handleKeyDown(event) {
-    const keyPressed = event.key.toLowerCase();
-    if (keyPressed === `arrowup` || keyPressed === `w`) {
-      // Move left paddle up
-      leftPaddle.style.top = Math.max(
-        parseInt(leftPaddle.style.top) - PADDLE_SPEED,
-        0
-      ) + `px`;
-    } else if (keyPressed === `arrowdown` || keyPressed === `s`) {
-      // Move left paddle down
-      leftPaddle.style.top = Math.min(
-        parseInt(leftPaddle.style.top) + PADDLE_SPEED,
-        container.offsetHeight - leftPaddle.offsetHeight
-      ) + `px`;
-    }
-  }
+
   
 	  // Start game loop
 	  update();
 	});
-	
+
   </script>
   
   <div class="container">
