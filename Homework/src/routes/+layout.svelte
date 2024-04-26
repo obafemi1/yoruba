@@ -12,15 +12,11 @@
 }
 
 body {
-    background-image: url('"D:\Pong\IMG_3716.JPG"');
+    background-image: url('C:\Users\elvir\OneDrive\Pictures\IMG_3744.JPG');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
+
 
 </style>
