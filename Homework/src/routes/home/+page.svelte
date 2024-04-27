@@ -4,7 +4,11 @@
 	let rightPaddle;
 	let leftPaddle;
 	let container;
-	const PADDLE_SPEED = 5; //change as needed
+	let leftScore = 0;
+	let rightScore = 0;
+    const PADDLE_SPEED = 5; //change as needed
+	const SCORE_TO_WIN = 5;
+
   
 	onMount(() => {
 	  document.addEventListener("DOMContentLoaded", () => {
@@ -49,6 +53,26 @@
 		) {
 		  ballSpeedX = -ballSpeedX;
 		}
+		if (parseInt(ball.style.left) <= 0) {
+        rightScore++;
+        document.getElementById("rightScore").textContent = rightScore;
+        resetBall();
+      }
+
+      if (parseInt(ball.style.left) + ball.offsetWidth >= container.offsetWidth) {
+        leftScore++;
+         document.getElementById("leftScore").textContent = leftScore;
+        resetBall();
+      }
+	  if (leftScore >= SCORE_TO_WIN) {
+        alert("Left player wins!");
+        resetScores();
+      } else if (rightScore >= SCORE_TO_WIN) {
+        alert("Right player wins!");
+        resetScores();
+      }
+
+
   
 		// Game loop
 		requestAnimationFrame(update);
@@ -82,6 +106,13 @@
           ) + `px`;
         }
       }
+	  function resetScores() {
+      leftScore = 0;
+      rightScore = 0;
+      document.getElementById("leftScore").textContent = leftScore;
+      document.getElementById("rightScore").textContent = rightScore;
+    }
+
 
 
   
@@ -95,6 +126,10 @@
 	<div class="ball" bind:this={ball}></div>
 	<div class="paddle" id="leftPaddle"></div>
 	<div class="paddle" id="rightPaddle"></div>
+	<div id="scoreboard">
+		<span id="leftScore">0</span> - <span id="rightScore">0</span>
+	  </div>
+	
   </div>
   
   <style>
@@ -125,5 +160,20 @@
 	  top: 50%;
 	  /* Start the right paddle in the center of the container*/
 	  transform: translate(0, -50%);
+	  
+	  #scoreboard {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+  }
+
+   #leftScore {
+    color: blue;
+  }
+
+    #rightScore {
+    color: red;
 	}
   </style>
