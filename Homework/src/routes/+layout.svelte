@@ -12,10 +12,10 @@
 }
 
 body {
-    background-image: url('C:\Users\elvir\OneDrive\Pictures\IMG_3744.JPG');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+    background-color: #f2f2f7; /* Apple's light gray background color */ 
+        border: 2px solid #dfe6e9; 
+    } 
+
 
 
 
