@@ -16,7 +16,7 @@
 			leftPaddle = document.getElementById('leftPaddle');
 			rightPaddle = document.getElementById('rightPaddle');
 			container = document.querySelector('.container');
-		});
+		});s
 		document.addEventListener(`keydown`, handleKeyDown);
 
 		// Initial ball speed
