@@ -6,17 +6,19 @@
 	let container;
 	let leftScore = 0;
 	let rightScore = 0;
-    const PADDLE_SPEED = 5; //change as needed
+	let w = 900;
+	let h = 600;
+	const PADDLE_SPEED = 5; //change as needed
 	const SCORE_TO_WIN = 5;
 
-  
 	onMount(() => {
-		document.addEventListener('DOMContentLoaded', () => {
-			ball = document.querySelector('.ball');
-			leftPaddle = document.getElementById('leftPaddle');
-			rightPaddle = document.getElementById('rightPaddle');
-			container = document.querySelector('.container');
-		});s
+		ball = document.querySelector('.ball');
+		leftPaddle = document.getElementById('leftPaddle');
+		rightPaddle = document.getElementById('rightPaddle');
+		container = document.querySelector('.container');
+
+		w = window.innerWidth * 0.8;
+		h = window.innerHeight * 0.8;
 		document.addEventListener(`keydown`, handleKeyDown);
 
 		// Initial ball speed
@@ -112,7 +114,7 @@
 	});
 </script>
 
-<div class="container">
+<div class="container" style="width: {w}px; height: {h}px">
 	<div class="ball" bind:this={ball}></div>
 	<div class="paddle" id="leftPaddle"></div>
 	<div class="paddle" id="rightPaddle"></div>
@@ -122,45 +124,36 @@
 </div>
 
 <style>
-	 
-	body {
-		font-family: "Roboto Mono", monospace;
-		background-color: #0e0e10; 
-	}
-
-	.container {
-		background-color: #2f2f31;
-		border: 1px solid #2f2f2f;
-		border-radius: 8px;
-		padding: 24px;
-		margin: 50px auto;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-	}
-
 	.ball {
 		width: 20px;
 		height: 20px;
-		background: linear-gradient(#ff00ff, #00ffff); 
+		background: linear-gradient(#ff00ff, #00ffff);
 		border-radius: 50%;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		box-shadow: 0 0 10px rgba(255, 0, 255, 0.6), 0 0 20px rgba(0, 255, 255, 0.6),
-			inset 0 0 20px rgba(0, 255, 255, 0.6), inset 0 0 10px rgba(255, 0, 255, 0.6); 
+		box-shadow:
+			0 0 10px rgba(255, 0, 255, 0.6),
+			0 0 20px rgba(0, 255, 255, 0.6),
+			inset 0 0 20px rgba(0, 255, 255, 0.6),
+			inset 0 0 10px rgba(255, 0, 255, 0.6);
 		transition: all 0.3s ease-out;
 	}
 
 	.paddle {
 		width: 20px;
 		height: 80px;
-		background: linear-gradient(90deg, #ff00ff, #00ffff); 
+		background: linear-gradient(90deg, #ff00ff, #00ffff);
 		position: absolute;
 		border-radius: 5px;
 		border: 1px solid #4c4c4c;
 		transition: all 0.3s ease-out;
-		box-shadow: 0 0 5px rgba(255, 0, 255, 0.6), 0 0 10px rgba(0, 255, 255, 0.6),
-			inset 0 0 10px rgba(0, 255, 255, 0.6), inset 0 0 5px rgba(255, 0, 255, 0.6); 
+		box-shadow:
+			0 0 5px rgba(255, 0, 255, 0.6),
+			0 0 10px rgba(0, 255, 255, 0.6),
+			inset 0 0 10px rgba(0, 255, 255, 0.6),
+			inset 0 0 5px rgba(255, 0, 255, 0.6);
 	}
 
 	#leftPaddle {
@@ -190,17 +183,23 @@
 		color: #ff00ff;
 	}
 
-	.container::before {
-		content: "";
+	.container {
+		background-color: #2f2f31;
+		border: 1px solid #2f2f2f;
+		border-radius: 8px;
+		padding: 24px;
+
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+		overflow: hidden;
 		position: absolute;
-		top: 0;
+		right: 0;
+
 		left: 0;
-		width: 100%;
-		height: 100%;
-		background-image: linear-gradient(
-				rgba(255, 255, 255, 0.03) 1px,
-				transparent 1px
-			),
+		margin-left: auto;
+		margin-right: auto;
+
+		background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
 			linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 		background-size: 50px 50px;
 		z-index: -1;
