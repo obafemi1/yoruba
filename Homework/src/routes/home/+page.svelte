@@ -109,9 +109,15 @@
 			document.getElementById('leftScore').textContent = leftScore;
 			document.getElementById('rightScore').textContent = rightScore;
 		}
+		function resetBall() {
+        ball.style.left = `${w / 2}px`;
+        ball.style.top = `${h / 2}px`;
+    }
+	    document.getElementById('startBtn').addEventListener('click', () => {
+        update();
+		document.getElementById('startBtn').remove();
+    });
 
-		// Start game loop
-		update();
 	});
 </script>
 
@@ -122,9 +128,46 @@
 	<div id="scoreboard">
 		<span id="leftScore">0</span> - <span id="rightScore">0</span>
 	</div>
+	<button id="startBtn" class="start-btn">START</button> 
 </div>
 
+
 <style>
+	 .start-btn {
+		position: absolute; 
+		top: 50%; left: 50%; 
+		transform: translate(-50%, -50%); 
+		padding: 12px 24px; 
+		background-color: #00ffff; 
+		color: #2f2f31; 
+		border: none; 
+		border-radius: 8px; 
+		font-size: 1.2rem; 
+		font-weight: bold; 
+		text-transform: uppercase; 
+		cursor: pointer; 
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+		animation: pulse 1s infinite; 
+	}
+	 .start-btn:hover {
+        background-color: #2f2f31;
+        color: #00ffff;
+	 }
+		@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+}
+
 	.ball {
 		width: 20px;
 		height: 20px;
